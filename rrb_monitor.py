@@ -109,6 +109,7 @@ async def main():
      FIRST_RUN = False
      while True:
         await check_rrb()
+        seen.clear()
         await asyncio.sleep(600)
 
 asyncio.run(main())
