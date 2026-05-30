@@ -27,7 +27,7 @@ try:
 except:
     seen = set()
 
-FIRST_RUN = not seen
+FIRST_RUN = False
 async def send_pdf(pdf_url, name):
     bot = Bot(token=TOKEN)
 
