@@ -77,6 +77,7 @@ async def check_rrb():
                         f.write(item + "\n")
 
                     if FIRST_RUN:
+                        FIRST_RUN = False
                         continue
 
                     if any(k in text.lower() for k in [
