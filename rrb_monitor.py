@@ -102,9 +102,11 @@ async def check_rrb():
             print(url, e)
 
 async def main():
-
      await send_msg("🚆 RRB Monitor Started")
-
+     global FIRST_RUN
+     FIRST_RUN = True
+     await check_rrb()
+     FIRST_RUN = False
      while True:
         await check_rrb()
         await asyncio.sleep(600)
