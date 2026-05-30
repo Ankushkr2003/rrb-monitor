@@ -63,12 +63,6 @@ async def check_rrb():
 
                 href = urljoin(url, href)
 
-                if href.lower().endswith(".pdf"):
-                    await send_pdf(
-                        href,
-                        href.split("/")[-1]
-                    )
-
                 item = f"{text}|{href}"
 
                 if item not in seen:
@@ -77,8 +71,12 @@ async def check_rrb():
                         f.write(item + "\n")
 
                     if FIRST_RUN:
-                        FIRST_RUN = False
                         continue
+                    if href.lower().endswith(".pdf"):
+                        await send_pdf(
+                            href,
+                            href.split("/")[-1]
+                        )
 
                     if any(k in text.lower() for k in [
                         "result",
